@@ -1,13 +1,10 @@
-import math as ma
-import os
-import time
-
-import cv2
-
 from model.yolov2 import Model
 from setting.config_manager import ConfigDecoder
 from util.manage_tfrecord import batch_reader
-
+import math as ma
+import os
+import time
+import cv2
 
 def learing_rate(lr):
     if lr > 1e-5:
@@ -23,20 +20,20 @@ def learing_rate2(total_epoch, cur_epoch):
     return ma.exp(equ1/equ2)
 
 
-def Train():
+def train_network(config_file, ):
     print("Training start")
+    # Network initializer
     config = ConfigDecoder("./setting/window_configure.json")
-    #TB_PATH = config.get_path("TB_logpath")
-    nb_clazz = config.get_training("number_class")
+    Network = Model(config, name="yolov2")
+
+    #TB_PATH = config.get_path("TB_logpath") # Not implementation
     training_epoch = config.get_training("total_epoch")
-    #nb_train_samples = config.get_training("trdata_nb")
-    #nb_test_samples = config.get_training("tedata_nb")
     batch_size = config.get_option("batch_size")
     learning_rate = config.get_training("lr")
     model_path = config.get_path("load_model")
     save_model = config.get_path("save_model")
 
-    Network = Model(config, name="yolov2")
+
     batch_load = batch_reader(config)
 
     nb_train_samples = batch_load.nb_train
@@ -44,10 +41,8 @@ def Train():
 
 
     for epoch in range(0, training_epoch):
-        avg_cost_train = 0
         avg_coor_loss = 0
         avg_iou_loss = 0
-        avg_iou_no_loss = 0
         avg_probability_loss = 0
 
         train_batch = int(nb_train_samples / batch_size)
@@ -57,28 +52,29 @@ def Train():
         print("learing_rate : ", str(learning_rate))
 
         ''' Training model '''
-        ''''''
         Recall, Cost = [0.0, 0.0]
         start_time = time.time()
         for count_batch in range(train_batch):
             batch_image, batch_label_box = batch_load.read_batch(training=True)
             c, _, r, c1, c2, c3 = Network.train(batch_image, batch_label_box, learning_rate)
-            Cost += c / train_batch
-            Recall += r / train_batch
-            avg_coor_loss += c1 / train_batch
-            avg_iou_loss += c2 / train_batch
-            avg_probability_loss += c3 / train_batch
+            Cost += c/train_batch
+            Recall += r/train_batch
+            avg_coor_loss += c1/train_batch
+            avg_iou_loss += c2/train_batch
+            avg_probability_loss += c3/train_batch
             print("Train Result /Recall: " + str(Recall) +"/Cost: " + str(Cost))
-            print("Train Result /coordinary: " + str(avg_coor_loss) + "/iou: " + str(avg_iou_loss) + "/prob: " + str(avg_probability_loss))
+            print("Train Result /coordinary: " + str(avg_coor_loss) +
+                  "/iou: " + str(avg_iou_loss) +
+                  "/prob: " + str(avg_probability_loss))
         print("--- %s training time(min) ---" % (time.time() - start_time))
-        print("Train Result /Recall: " + str(Recall) +"/Cost: " + str(Cost))
-        print("Train Result /coordinary: " + str(avg_coor_loss) + "/iou: " + str(avg_iou_loss) + "/prob: " + str(avg_probability_loss))
+        print("Train Result /Recall: " + str(Recall) + "/Cost: " + str(Cost))
+        print("Train Result /coordinary: " + str(avg_coor_loss) +
+              "/iou: " + str(avg_iou_loss) +
+              "/prob: " + str(avg_probability_loss))
 
         ''' Testing model '''
         avg_coor_loss = 0
-        avg_wh_loss = 0
         avg_iou_loss = 0
-        avg_iou_no_loss = 0
         avg_probability_loss = 0
 
         Recall, Cost = [0.0, 0.0]
@@ -93,7 +89,9 @@ def Train():
             avg_probability_loss += c3 / test_batch
         print("--- %s test time(min) ---" % (time.time() - start_time))
         print("Test Result /Recall: " + str(Recall) + "/Cost: " + str(Cost))
-        print("Test Result /coordinary: " + str(avg_coor_loss) + "/iou: " + str(avg_iou_loss) + "/prob: " + str(avg_probability_loss))
+        print("Test Result /coordinary: " + str(avg_coor_loss) +
+              "/iou: " + str(avg_iou_loss) +
+              "/prob: " + str(avg_probability_loss))
 
         ''' Get samples '''
         if epoch % 5 == 0 :
@@ -111,21 +109,13 @@ def Train():
                         cv2.putText(batch_image[i], str(claz) + ": " + str(score), (x1, y1 + 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5,
                                     color, 1, cv2.LINE_AA)
                         cv2.rectangle(batch_image[i], (x1, y1), (x2, y2), color, 2)
-                    try:
-                        #image = cv2.cvtColor(batch_image[i], cv2.COLOR_RGB2BGR)
                         cv2.imwrite("./temp/"+str(epoch)+"/image_" + str(i) + str(bol) + ".jpg", batch_image[i])
                         print("saved : ./temp/" + str(epoch) + "/image_" + str(i) + str(bol) + ".jpg")
-                    except :
-                        print("no bound box")
-                        continue
-        #x1, y1, x2, y2, score, claz, claz_str, color = obj
         batch_load.data_shuffle()
         print("Save model :" + save_model)
         Network.save_model(save_model, epoch)
     Network.close()
 
 if __name__ == '__main__':
-
-
-
+    train_network(config_file = "./setting/window_configure.json")
 

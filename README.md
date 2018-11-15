@@ -1,8 +1,8 @@
-* * *
-# YOLO-Tensorflow
-## You Only Look Once
-* * *
 
+# YOLO-Tensorflow
+=======================================
+## You Only Look Once
+---------------------------------------
 
 
 # Download model & configure file 

@@ -19,8 +19,8 @@ https://drive.google.com/drive/folders/1wZ-ZBqkeBU9P6At6FSJsOXE9zW7AK6fI?usp=sha
 
 ### Quick start
 
-##### 1. download this project
-##### 2. download model weight, configure file, label from [here](https://drive.google.com/drive/folders/1wZ-ZBqkeBU9P6At6FSJsOXE9zW7AK6fI?usp=sharing)
+##### 1. Download this project
+##### 2. Download model weight, configure file, label from [here](https://drive.google.com/drive/folders/1wZ-ZBqkeBU9P6At6FSJsOXE9zW7AK6fI?usp=sharing)
 ##### 3. There are 3 files in google drive. 
 
 ###### CNN model files
@@ -35,6 +35,31 @@ https://drive.google.com/drive/folders/1wZ-ZBqkeBU9P6At6FSJsOXE9zW7AK6fI?usp=sha
 ###### Label:color match file
     - pascal_voc_label
 
+##### 4. Open configure file and setting your path
+    - you need to check only path area
+```python
+        "path": {
+            "load_model": "./saved_network/[pascal_voc_2017]-416_5",        # writhe your loaded model path
+            "save_model" : "./saved_network/[pascal_voc_2017]-416_57",      # this will use when you training
+            "TB_logpath": "./",
+            "Label_path": "./setting/pascal_voc_label",                     # label file location
+            "data_path": "./Data/",                          # this will use when you training
+            
+            "train_path_f": "",                                             # for fine tunning [not implemented]
+            "test_path_f":"",                                               # for fine tunning [not implemented]
+            "data_path_f":"",                                               # for fine tunning [not implemented]
+            "classfication_dir": "/home/titan/data/"                        # for fine tunning [not implemented]
+        },
+```
+
+##### 5. open 'detector_opencv.py' and just run ( you need camera )
+```python
+    if __name__ == '__main__':
+        # Test camera use your cv
+        main(0, "./setting/coco_config.json")
+        # Record detected vedeo
+        main(path, "./setting/configure.json",record=True,record_path="./output.mp4",resolution=(1280, 642))
+```
 ### Configure file
 
 ```python

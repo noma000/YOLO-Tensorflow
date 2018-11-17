@@ -21,6 +21,7 @@ https://drive.google.com/drive/folders/1wZ-ZBqkeBU9P6At6FSJsOXE9zW7AK6fI?usp=sha
 
 1. download this project
 2. download model weight, configure file, label from [here](https://drive.google.com/drive/folders/1wZ-ZBqkeBU9P6At6FSJsOXE9zW7AK6fI?usp=sharing)
+3. There are 3 files in google drive. 
 
 ### Configure file
 

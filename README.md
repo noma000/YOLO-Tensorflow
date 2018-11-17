@@ -36,7 +36,7 @@ https://drive.google.com/drive/folders/1wZ-ZBqkeBU9P6At6FSJsOXE9zW7AK6fI?usp=sha
     - pascal_voc_label
 
 ##### 4. Open configure file and setting your path
-    - you need to check only path area
+
 ```python
         "path": {
             "load_model": "./saved_network/[pascal_voc_2017]-416_5",        # writhe your loaded model path

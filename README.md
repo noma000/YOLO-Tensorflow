@@ -17,9 +17,11 @@ https://drive.google.com/drive/folders/1wZ-ZBqkeBU9P6At6FSJsOXE9zW7AK6fI?usp=sha
 
 ![Alt text](./Readme_Image/figure_01.JPG)
 
-1. download this project
-2. download model weight, configure file, label from here(https://drive.google.com/drive/folders/1wZ-ZBqkeBU9P6At6FSJsOXE9zW7AK6fI?usp=sharing)
 ### Quick start
+
+1. download this project
+2. download model weight, configure file, label from [here](https://drive.google.com/drive/folders/1wZ-ZBqkeBU9P6At6FSJsOXE9zW7AK6fI?usp=sharing)
+
 ### Configure file
 
 ```python

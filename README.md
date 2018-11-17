@@ -40,7 +40,7 @@ https://drive.google.com/drive/folders/1wZ-ZBqkeBU9P6At6FSJsOXE9zW7AK6fI?usp=sha
 ```python
         "path": {
             "load_model": "./saved_network/[pascal_voc_2017]-416_5",        # writhe your loaded model path
-            "save_model" : "./saved_network/[pascal_voc_2017]-416_57",      # this will use when you training
+            "save_model" : "./saved_network/[pascal_voc_2017]-416_5",      # this will use when you training
             "TB_logpath": "./",
             "Label_path": "./setting/pascal_voc_label",                     # label file location
             "data_path": "./Data/",                          # this will use when you training
@@ -56,9 +56,9 @@ https://drive.google.com/drive/folders/1wZ-ZBqkeBU9P6At6FSJsOXE9zW7AK6fI?usp=sha
 ```python
     if __name__ == '__main__':
         # Test camera use your cv
-        main(0, "./setting/coco_config.json")
+        main(0, "./saved_network/[pascal_voc_2017]-416_5")
         # Record detected vedeo
-        main(path, "./setting/configure.json",record=True,record_path="./output.mp4",resolution=(1280, 642))
+        main(path, "./saved_network/[pascal_voc_2017]-416_5",record=True,record_path="./output.mp4",resolution=(1280, 642))
 ```
 ### Configure file
 

@@ -30,6 +30,7 @@ def train_network(config_file, ):
     training_epoch = config.get_training("total_epoch")
     batch_size = config.get_option("batch_size")
     learning_rate = config.get_training("lr")
+    decrease_rate = config.get_training("decrease_rate")
     model_path = config.get_path("load_model")
     save_model = config.get_path("save_model")
 
@@ -48,7 +49,8 @@ def train_network(config_file, ):
         train_batch = int(nb_train_samples / batch_size)
         test_batch = int(nb_test_samples / batch_size)
         print("EPOCH : [", str(epoch), "/", str(training_epoch), "]")
-        learning_rate = learing_rate2(training_epoch, epoch)
+        learning_rate = learning_rate * decrease_rate
+        #learning_rate = learing_rate2(training_epoch, epoch)
         print("learing_rate : ", str(learning_rate))
 
         ''' Training model '''

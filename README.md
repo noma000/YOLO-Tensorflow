@@ -52,7 +52,7 @@ https://drive.google.com/drive/folders/1wZ-ZBqkeBU9P6At6FSJsOXE9zW7AK6fI?usp=sha
         },
 ```
 
-##### 5. open 'detector_opencv.py' and just run ( you need camera )
+##### 5. Open 'detector_opencv.py' and just run ( you need camera )
 ```python
     if __name__ == '__main__':
         # Test camera use your cv

@@ -51,12 +51,9 @@ https://drive.google.com/drive/folders/1wZ-ZBqkeBU9P6At6FSJsOXE9zW7AK6fI?usp=sha
         },
         "training_setting": {                                   # training detection model setting [not implemented]
             "total_epoch": 600,
-            "number_class": 80,
-            "lr": 0.001,
-            "decrease_rate": [ 0.9, 0.95, 0.99],
-            "decrease_epoch": [ 20, 40, 60],
-            "trdata_nb" :500,
-            "tedata_nb" : 50
+            "number_class": 80,                                 # number of class
+            "lr": 0.001,                                        # learning_rate
+            "decrease_rate": 0.99,                              # decrease_rate of learning rate per epoch
         },
         "finetunning_setting": {                                # training classification model setting
             "total_epoch": 10,                                  

@@ -19,20 +19,21 @@ https://drive.google.com/drive/folders/1wZ-ZBqkeBU9P6At6FSJsOXE9zW7AK6fI?usp=sha
 
 ### Quick start
 
-1. download this project
-2. download model weight, configure file, label from [here](https://drive.google.com/drive/folders/1wZ-ZBqkeBU9P6At6FSJsOXE9zW7AK6fI?usp=sharing)
-3. There are 3 files in google drive. 
+##### 1. download this project
+##### 2. download model weight, configure file, label from [here](https://drive.google.com/drive/folders/1wZ-ZBqkeBU9P6At6FSJsOXE9zW7AK6fI?usp=sharing)
+##### 3. There are 3 files in google drive. 
 
-#### CNN model files
-- [pascal_voc_2017]-416_5.data
-- [pascal_voc_2017]-416_5.index
-- [pascal_voc_2017]-416_5.meta
+###### CNN model files
+    
+    - [pascal_voc_2017]-416_5.data
+    - [pascal_voc_2017]-416_5.index
+    - [pascal_voc_2017]-416_5.meta
 
-#### Network configure file
-- pascal_voc_config.json
+###### Network configure file
+    - pascal_voc_config.json
 
-#### Label:color match file
-- pascal_voc_label
+###### Label:color match file
+    - pascal_voc_label
 
 ### Configure file
 

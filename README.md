@@ -171,7 +171,7 @@ then you can get anchors like this.
 - Tensorboard_use is not implemented.  
 - max_to_keep means number of models to keep  
 - batch_size means batch_size, when i train model, i fixed to 15 to prevent memory exceed (In 1080 ti 11G) if you take memory exceed error, reduce this value
-- If you don't have any pre training model set false /option/use_pretrainmodel
+- If you don't have any pre-training model set false "/option/use_pretrainmodel"
 - total_epoch means number of training
 - lr : learning rate
 - decrease_rate : decrease_Rate per epoch

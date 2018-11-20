@@ -1,11 +1,11 @@
 # YOLO-Tensorflow
 
-### Download model & configure file 
+## Download model & configure file 
 
 https://drive.google.com/drive/folders/1wZ-ZBqkeBU9P6At6FSJsOXE9zW7AK6fI?usp=sharing
 
 
-### Library version
+## Library version
 
 + tensorflow-gpu 1.10.0
 + tensorflow 1.2.0
@@ -17,6 +17,49 @@ https://drive.google.com/drive/folders/1wZ-ZBqkeBU9P6At6FSJsOXE9zW7AK6fI?usp=sha
 
 ![Alt text](./Readme_Image/figure_01.JPG)
 
+## Quick start
+
+##### 1. Download this project
+##### 2. Download model weight, configure file, label from [here](https://drive.google.com/drive/folders/1wZ-ZBqkeBU9P6At6FSJsOXE9zW7AK6fI?usp=sharing)
+##### 3. There are 3 files in google drive. 
+
+###### CNN model files
+    
+    - [pascal_voc_2017]-416_5.data
+    - [pascal_voc_2017]-416_5.index
+    - [pascal_voc_2017]-416_5.meta
+
+###### Network configure file
+    - pascal_voc_config.json
+
+###### Label:color match file
+    - pascal_voc_label
+
+##### 4. Open configure file and setting your path
+
+```python
+        "path": {
+            "load_model": "./saved_network/[pascal_voc_2017]-416_5",        # writhe your loaded model path
+            "save_model" : "./saved_network/[pascal_voc_2017]-416_5",      # this will use when you training
+            "TB_logpath": "./",
+            "Label_path": "./setting/pascal_voc_label",                     # label file location
+            "data_path": "./Data/",                          # this will use when you training
+            
+            "train_path_f": "",                                             # for fine tunning [not implemented]
+            "test_path_f":"",                                               # for fine tunning [not implemented]
+            "data_path_f":"",                                               # for fine tunning [not implemented]
+            "classfication_dir": "/home/titan/data/"                        # for fine tunning [not implemented]
+        },
+```
+
+##### 5. Open 'detector_opencv.py' and just run ( you need camera )
+```python
+    if __name__ == '__main__':
+        # Test camera use your cv
+        main(0, "./saved_network/[pascal_voc_2017]-416_5")
+        # Record detected vedeo
+        main(path, "./saved_network/[pascal_voc_2017]-416_5",record=True,record_path="./output.mp4",resolution=(1280, 642))
+```
 ### Configure file
 
 ```python

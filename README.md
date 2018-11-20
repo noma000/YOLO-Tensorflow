@@ -224,7 +224,7 @@ pciBusID: 0000:01:00.0
 totalMemory: 10.91GiB freeMemory: 10.68GiB
 
 Net_id  Layer           K/S             Input_shape             Output_shape    Activation              Name
-----------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------
 [No1]   [Conv_bn]       3x3/1   608x608x3       →       608x608x32              leaky_relu              net_1
 [No2]   [Max_pool]      3x3/2   608x608x32      →       304x304x32
 [No3]   [Conv_bn]       3x3/1   304x304x32      →       304x304x64              leaky_relu              net_2

@@ -20,10 +20,10 @@ def learing_rate2(total_epoch, cur_epoch):
     return ma.exp(equ1/equ2)
 
 
-def train_network(config_file, ):
-    print("Training start")
+def train_network(config_file):
+    print("***  Training start  ***")
     # Network initializer
-    config = ConfigDecoder("./setting/window_configure.json")
+    config = ConfigDecoder(config_file)
     Network = Model(config, name="yolov2")
 
     #TB_PATH = config.get_path("TB_logpath") # Not implementation

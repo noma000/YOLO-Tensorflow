@@ -166,7 +166,7 @@ then you can get anchors like this.
 
 [[1.0068,1.6871], [2.5020,4.4176], [4.3034,8.7792], [7.8379,5.2096], [10.0773,10.7282]]
 
-### 3 Set your training parameter
+### 3. Set your training parameter
 
 - Tensorboard_use is not implemented.  
 - max_to_keep means number of models to keep  
@@ -192,7 +192,7 @@ then you can get anchors like this.
         },
 ```
 
-### 4 Everything is all set. Let's do model training.
+### 4. Everything is all set. Let's do model training.
 
 In the train.py you set your configure file
 

@@ -90,30 +90,30 @@ you set data_path in this directory you have 3type of files
 
 In data directory
 
--rw-r--r-- 1 root root  108389 Mar  4  2018 2012_004329.jpg
--rw-r--r-- 1 root root      53 Mar  4  2018 2012_004329.txt
--rw-r--r-- 1 root root  131185 Mar  4  2018 2012_004330.jpg
--rw-r--r-- 1 root root      40 Mar  4  2018 2012_004330.txt
--rw-r--r-- 1 root root  148030 Mar  4  2018 2012_004331.jpg
--rw-r--r-- 1 root root      39 Mar  4  2018 2012_004331.txt
--rw-r--r-- 1 root root   39614 Mar  4  2018 test.txt
--rw-r--r-- 1 root root  262711 Mar  4  2018 train.txt
+-rw-r--r-- 1 root root  108389 Mar  4  2018 2012_004329.jpg  
+-rw-r--r-- 1 root root      53 Mar  4  2018 2012_004329.txt  
+-rw-r--r-- 1 root root  131185 Mar  4  2018 2012_004330.jpg  
+-rw-r--r-- 1 root root      40 Mar  4  2018 2012_004330.txt  
+-rw-r--r-- 1 root root  148030 Mar  4  2018 2012_004331.jpg  
+-rw-r--r-- 1 root root      39 Mar  4  2018 2012_004331.txt  
+-rw-r--r-- 1 root root   39614 Mar  4  2018 test.txt  
+-rw-r--r-- 1 root root  262711 Mar  4  2018 train.txt  
 
-root@user-P10S-WS:/disk1/titans_data/pascal_voc/PASCAL_VOC# cat 2012_004331.txt
+root@user-P10S-WS:/disk1/titans_data/pascal_voc/PASCAL_VOC# cat 2012_004331.txt  
 14 0.31 0.34 0.212 0.5466666666666666
 
 Each value means class(like persone or car), center x, center y, width, height in the 2012_044331.jpg file.
 
-root@user-P10S-WS:/disk1/titans_data/pascal_voc/PASCAL_VOC# tail train.txt 
-2012_004310
-2012_004312
-2012_004315
-2012_004317
-2012_004319
-2012_004326
-2012_004328
-2012_004329
-2012_004330
+root@user-P10S-WS:/disk1/titans_data/pascal_voc/PASCAL_VOC# tail train.txt   
+2012_004310  
+2012_004312  
+2012_004315  
+2012_004317  
+2012_004319  
+2012_004326  
+2012_004328  
+2012_004329  
+2012_004330  
 
 In train.txt file you write your train_datas name except extension
 

@@ -61,11 +61,11 @@ https://drive.google.com/drive/folders/1wZ-ZBqkeBU9P6At6FSJsOXE9zW7AK6fI?usp=sha
         main(path, "./saved_network/[pascal_voc_2017]-416_5",record=True,record_path="./output.mp4",resolution=(1280, 642))
 ```
 
-### How to training
+## How to training
 You want training new model on your dataset follow behind
 
 
-##### 1. Check your path of dataset, model_name, Label_path
+#### 1. Check your path of dataset, model_name, Label_path
 
 In configure file you must check load_model, save_model, Label_path, data_path ignore other things
 
@@ -119,7 +119,7 @@ root@user-P10S-WS:/disk1/titans_data/pascal_voc/PASCAL_VOC# tail train.txt
 ```
 
 
-##### 2. Select archtecture you want and use get_anchors.py to get an anchors
+#### 2. Select archtecture you want and use get_anchors.py to get an anchors
 
 you can find model in model/Network/[net name] and change the configure file
 
@@ -141,9 +141,9 @@ then you can get anchors like this.
 
 [[1.0068,1.6871], [2.5020,4.4176], [4.3034,8.7792], [7.8379,5.2096], [10.0773,10.7282]]
 
-##### 1. Select archtecture you want and use get_anchors.py to get an anchors
+#### 1. Select archtecture you want and use get_anchors.py to get an anchors
 
-### Configure file
+## Configure file
 
 ```python
     {
@@ -210,7 +210,7 @@ then you can get anchors like this.
     }
 ```
 
-### Running sample
+## Running sample
 detector_opencv.py
 parm1 : input_stream  / parm2 : configure file
     

@@ -60,6 +60,11 @@ https://drive.google.com/drive/folders/1wZ-ZBqkeBU9P6At6FSJsOXE9zW7AK6fI?usp=sha
         # Record detected vedeo
         main(path, "./saved_network/[pascal_voc_2017]-416_5",record=True,record_path="./output.mp4",resolution=(1280, 642))
 ```
+
+### How to trainingㄹ
+You want training new model on your dataset follow behind
+
+##### 1. Check your archtecture and get anchor using 
 ### Configure file
 
 ```python
@@ -143,7 +148,7 @@ parm1 : input_stream  / parm2 : configure file
 
 
 
-### How to training
+
 
 
 

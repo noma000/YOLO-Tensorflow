@@ -85,7 +85,8 @@ In configure file you must check load_model, save_model, Label_path, data_path i
 save_model & load_model use when you save&load model, you just set the path
 
 you set data_path in this directory you have 3type of files
-1. Image(jpg) file, Label(.txt)file, train.txt file, test.txt file
+
+- Image(jpg) file, Label(.txt)file, train.txt file, test.txt file
 
 In data directory
 

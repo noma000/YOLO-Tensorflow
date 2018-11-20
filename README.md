@@ -89,7 +89,7 @@ you set data_path in this directory you have 3type of files
 - Image(jpg) file, Label(.txt)file, train.txt file, test.txt file
 
 In data directory
-
+```txt
 -rw-r--r-- 1 root root  108389 Mar  4  2018 2012_004329.jpg  
 -rw-r--r-- 1 root root      53 Mar  4  2018 2012_004329.txt  
 -rw-r--r-- 1 root root  131185 Mar  4  2018 2012_004330.jpg  
@@ -98,12 +98,14 @@ In data directory
 -rw-r--r-- 1 root root      39 Mar  4  2018 2012_004331.txt  
 -rw-r--r-- 1 root root   39614 Mar  4  2018 test.txt  
 -rw-r--r-- 1 root root  262711 Mar  4  2018 train.txt  
-
+```
+Each value means class(like persone or car), center x, center y, width, height in the 2012_044331.jpg file.
+```txt
 root@user-P10S-WS:/disk1/titans_data/pascal_voc/PASCAL_VOC# cat 2012_004331.txt  
 14 0.31 0.34 0.212 0.5466666666666666
-
-Each value means class(like persone or car), center x, center y, width, height in the 2012_044331.jpg file.
-
+```
+In train.txt file you write your train_datas name except extension
+```txt
 root@user-P10S-WS:/disk1/titans_data/pascal_voc/PASCAL_VOC# tail train.txt   
 2012_004310  
 2012_004312  
@@ -114,8 +116,8 @@ root@user-P10S-WS:/disk1/titans_data/pascal_voc/PASCAL_VOC# tail train.txt
 2012_004328  
 2012_004329  
 2012_004330  
+```
 
-In train.txt file you write your train_datas name except extension
 
 ##### 2. Select archtecture you want and use get_anchors.py to get an anchors
 

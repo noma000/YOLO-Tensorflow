@@ -61,10 +61,85 @@ https://drive.google.com/drive/folders/1wZ-ZBqkeBU9P6At6FSJsOXE9zW7AK6fI?usp=sha
         main(path, "./saved_network/[pascal_voc_2017]-416_5",record=True,record_path="./output.mp4",resolution=(1280, 642))
 ```
 
-### How to trainingㄹ
+### How to training
 You want training new model on your dataset follow behind
 
-##### 1. Check your archtecture and get anchor using 
+
+##### 1. Check your path of dataset, model_name, Label_path
+
+In configure file you must check load_model, save_model, Label_path, data_path ignore other things
+
+```python
+        "path": {
+            "load_model": "./saved_network/COCO_max-31",        # load model location
+            "save_model" : "./saved_network/pascal_voc_2017",   # saved model location 
+            "TB_logpath": "./",
+            "Label_path": "./setting/coco_label",               # label file location
+            "data_path": "D:/dataset/PASCAL_VOC/",              # image datas location
+            "train_path_f": "",
+            "test_path_f":"",
+            "data_path_f":"",
+            "classfication_dir": "/home/titan/data/"            # [not implemented]
+        },
+```
+save_model & load_model use when you save&load model, you just set the path
+
+you set data_path in this directory you have 3type of files
+1. Image(jpg) file, Label(.txt)file, train.txt file, test.txt file
+
+In data directory
+
+-rw-r--r-- 1 root root  108389 Mar  4  2018 2012_004329.jpg
+-rw-r--r-- 1 root root      53 Mar  4  2018 2012_004329.txt
+-rw-r--r-- 1 root root  131185 Mar  4  2018 2012_004330.jpg
+-rw-r--r-- 1 root root      40 Mar  4  2018 2012_004330.txt
+-rw-r--r-- 1 root root  148030 Mar  4  2018 2012_004331.jpg
+-rw-r--r-- 1 root root      39 Mar  4  2018 2012_004331.txt
+-rw-r--r-- 1 root root   39614 Mar  4  2018 test.txt
+-rw-r--r-- 1 root root  262711 Mar  4  2018 train.txt
+
+root@user-P10S-WS:/disk1/titans_data/pascal_voc/PASCAL_VOC# cat 2012_004331.txt
+14 0.31 0.34 0.212 0.5466666666666666
+
+Each value means class(like persone or car), center x, center y, width, height in the 2012_044331.jpg file.
+
+root@user-P10S-WS:/disk1/titans_data/pascal_voc/PASCAL_VOC# tail train.txt 
+2012_004310
+2012_004312
+2012_004315
+2012_004317
+2012_004319
+2012_004326
+2012_004328
+2012_004329
+2012_004330
+
+In train.txt file you write your train_datas name except extension
+
+##### 2. Select archtecture you want and use get_anchors.py to get an anchors
+
+you can find model in model/Network/[net name] and change the configure file
+
+```python
+"network": {
+    "anchor": [[1.0068,1.6871], [2.5020,4.4176], [4.3034,8.7792], [7.8379,5.2096], [10.0773,10.7282]],
+    "name": "darknet_full",
+    "input_shape" : 416,
+    "output_shape" : 13,
+    "finetunning" : false
+     },
+```
+
+get anchor using under command line
+
+    # python3 get_anchors.py -c [configurefile path] -a [# of anchors]
+
+then you can get anchors like this.
+
+[[1.0068,1.6871], [2.5020,4.4176], [4.3034,8.7792], [7.8379,5.2096], [10.0773,10.7282]]
+
+##### 1. Select archtecture you want and use get_anchors.py to get an anchors
+
 ### Configure file
 
 ```python

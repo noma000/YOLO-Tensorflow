@@ -17,7 +17,10 @@ class Model:
     def __init__(self, config, name=""):
         self.sess = tf.Session()
         self.name = name
-        self.model_name = config.get_model("name")
+        model_string = config.get_model("name")
+
+        self.model_name = model_string.split('-')[0]
+        self.model_ver = model_string.split('-')[1]
         self.anchor = config.get_model("anchor")
 
         self.cell_wh = config.get_model("output_shape")
@@ -50,12 +53,14 @@ class Model:
             self.NModel = darknet_full.Network(self.input, config, self.TI, self.training)
         elif self.model_name == "darknet_tiny":
             self.NModel = darknet_tiny.Network(self.input, config, self.TI, self.training)
+        elif self.model_name == "darknet_19":
+            self.NModel = darknet_19.Network(self.input, config, self.TI, self.training)
+        elif self.model_name == "resnet":
+            self.NModel = resnet.Network(self.input, config, self.TI, self.training, Nb_Layer=int(self.model_ver))
         elif self.model_name == "densenet":
             self.NModel = densenet.Network(self.input, config, self.TI, self.training)
         elif self.model_name == "fully_convnet":
             self.NModel = fully_convnet.Network(self.input, config, self.TI, self.training)
-        elif self.model_name == "darknet_19":
-            self.NModel = darknet_19.Network(self.input, config, self.TI, self.training)
         else:
             warnings.warn("There is no such model", DeprecationWarning)
 
@@ -162,8 +167,8 @@ class Model:
         #### delima
         ex_conf = tf.expand_dims(confs, axis=3)
         ex_mask_conf = tf.expand_dims(mask_conf, axis=3)
-        #self.iou_loss = tf.nn.sigmoid_cross_entropy_with_logits(logits=self.NModel.confi, labels=confs) * mask_conf
-        self.iou_loss = tf.square(self.NModel.confi - confs) * mask_conf
+        self.iou_loss = tf.nn.sigmoid_cross_entropy_with_logits(logits=self.NModel.confi, labels=confs) * mask_conf
+        #self.iou_loss = tf.square(self.NModel.confi - confs) * mask_conf
 
         self.coord_loss = tf.square(self.NModel.coords - self.label_coord) * mask_coord
         #self.prob_loss = tf.nn.sigmoid_cross_entropy_with_logits(logits=self.NModel.predict_class,labels=self.label_clazz)  * mask_predict  # * ex_mask_predict

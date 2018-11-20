@@ -8,6 +8,7 @@ from . import darknet_tiny
 from . import densenet
 from . import fully_convnet
 from . import darknet_19
+from . import resnet
 #from . import darknet_implement
 
 

@@ -4,7 +4,7 @@ from model.Network.Net import Net
 '''
     "network": {
         "anchor": [[1.0068,1.6871], [2.5020,4.4176], [4.3034,8.7792], [7.8379,5.2096], [10.0773,10.7282]],
-        "name": "darknet_full",
+        "name": "darknet_19",
         "input_shape" : 608,
         "output_shape" : 19,
         "finetunning" : false

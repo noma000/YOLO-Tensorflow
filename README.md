@@ -325,6 +325,41 @@ Save model :./saved_network/coco_mix
 
 ### How to draw Precision & Recall curve
 
+Check map_recall_calc.py 
+
+Read configure setting
+```python
+    config = ConfigDecoder("./setting/window_configure.json")
+    nb_claz = config.get_training("number_class")
+    last_grid = config.get_model("output_shape")
+    anchor_len = len(config.get_model("anchor"))
+    Network_name = config.get_model("name")
+```
+
+Predict file is made by model, if you already excute this line then skip the command
+```python
+make_predict_file(config, file_path='./predict_file.pickle')
+```
+
+Check the number of thresholds
+```python
+    # If you want more dense precision & recall graph increase number of threshold
+    # confidence threshold for NMS
+    T = [float(i)/10 for i in range(0,11)]
+    # IOU threshold for NMS
+    IT =[float(i)/10 for i in range(0,11)]
+```
+
+Then you can get below graph (It can take a lot of time.)
+
+
+
+
+
+
+
+And you can get an Excel file that represents the confusion matrix.
+
 
 ## Configure file
 
@@ -405,6 +440,8 @@ parm1 : input_stream  / parm2 : configure file
     
     # Record output steam
     main(path, "./setting/configure.json",record=True,record_path="./output.mp4",resolution=(1280, 642))
+
+
 
 
 

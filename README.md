@@ -427,6 +427,13 @@ And you can get an Excel file that represents the confusion matrix.
         }
     }
 ```
+## Network Training tip
+### 1. when network's cost becom nan, reduce learning rate. (1e-4 is adaptable)
+### 2. when learning rate is already super low, but cost still nan, then check the dataset (specially labels)
+### 3. when i training coco dataset using this network, i can get meaningful image in one epoch.
+
+
+
 
 ## Running sample
 detector_opencv.py
